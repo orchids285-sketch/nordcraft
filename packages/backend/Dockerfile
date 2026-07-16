@@ -4,7 +4,7 @@ FROM oven/bun:1.3.13-debian AS build
 WORKDIR /app
 COPY . .
 RUN bun install
-RUN bun run build
+RUN cd packages/core && bun run build && cd ../lib && bun run build && cd ../ssr && bun run build && cd ../runtime && bun run build
 RUN cd packages/backend && bun run sync
 RUN bun build --compile --minify --sourcemap ./packages/backend/src/bun.index.ts --outfile nordcraft-backend
 
