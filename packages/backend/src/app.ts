@@ -52,7 +52,6 @@ export const getApp = <T extends Record<string, any>>(options: {
 
   options.earlyMiddleware?.forEach((mw) => app.use(mw))
 
-  app.use(poweredBy({ serverName: 'Nordcraft' })) // 🌲🌲🌲
 
   if (options.staticRouter) {
     app.use(options.staticRouter.path, options.staticRouter.handler)
